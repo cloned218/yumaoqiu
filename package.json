@@ -1,0 +1,12 @@
+{
+  "name": "yumaoqiu-h5",
+  "version": "1.0.0",
+  "description": "羽乐场 - 羽毛球排位赛 微信公众号H5",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["badminton", "wechat", "h5"],
+  "license": "MIT"
+}
