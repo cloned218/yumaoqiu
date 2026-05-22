@@ -1,109 +1,140 @@
-(function(){
+(function () {
   'use strict';
 
-  // ===== Page Navigation =====
-  var navItems = document.querySelectorAll('.nav-item');
-  var pages = document.querySelectorAll('.page');
+  var routes = [
+    {
+      route: 'home',
+      title: '首页',
+      image: 'assets/figma/pages/home@2x.png',
+      width: 448,
+      height: 1283
+    },
+    {
+      route: 'ranking-empty',
+      title: '排位赛无',
+      image: 'assets/figma/pages/ranking-empty@2x.png',
+      width: 448,
+      height: 990.5
+    },
+    {
+      route: 'ranking-matched',
+      title: '排位赛-已匹配，待确认',
+      image: 'assets/figma/pages/ranking-matched@2x.png',
+      width: 448,
+      height: 1072
+    },
+    {
+      route: 'ranking-matching',
+      title: '排位赛-匹配中',
+      image: 'assets/figma/pages/ranking-matching@2x.png',
+      width: 448,
+      height: 1072
+    },
+    {
+      route: 'ranking-pending',
+      title: '排位赛-待参赛',
+      image: 'assets/figma/pages/ranking-pending@2x.png',
+      width: 448,
+      height: 1072
+    },
+    {
+      route: 'ranking-review',
+      title: '排位赛-待评价',
+      image: 'assets/figma/pages/ranking-review@2x.png',
+      width: 448,
+      height: 1072
+    },
+    {
+      route: 'ranking-history',
+      title: '排位赛历史',
+      image: 'assets/figma/pages/ranking-history@2x.png',
+      width: 448,
+      height: 1044
+    }
+  ];
 
-  // Map nav data to page ids
-  var navToPage = {
-    home: 'page-home',
-    ranking: 'page-ranking-empty',
-    match: 'page-home',
-    shop: 'page-home',
-    profile: 'page-home'
+  var routeMap = {};
+  routes.forEach(function (page) {
+    routeMap[page.route] = page;
+  });
+
+  var hotspots = {
+    home: [
+      { to: 'ranking-empty', left: 24, top: 0, width: 98, height: 74 },
+      { to: 'ranking-empty', left: 0, top: 1216, width: 180, height: 67 }
+    ],
+    'ranking-empty': [
+      { to: 'ranking-history', left: 16, top: 918, width: 416, height: 44 }
+    ],
+    'ranking-matched': [
+      { to: 'ranking-empty', left: 14, top: 50, width: 32, height: 28 }
+    ],
+    'ranking-matching': [
+      { to: 'ranking-empty', left: 14, top: 50, width: 32, height: 28 }
+    ],
+    'ranking-pending': [
+      { to: 'ranking-empty', left: 14, top: 50, width: 32, height: 28 }
+    ],
+    'ranking-review': [
+      { to: 'ranking-empty', left: 14, top: 50, width: 32, height: 28 }
+    ],
+    'ranking-history': [
+      { to: 'ranking-empty', left: 14, top: 50, width: 32, height: 28 }
+    ]
   };
 
-  function showPage(pageId) {
-    pages.forEach(function(p) { p.classList.remove('active'); });
-    var target = document.getElementById(pageId);
-    if (target) target.classList.add('active');
-    document.getElementById('mainContent').scrollTop = 0;
+  var frame = document.getElementById('frame');
+
+  function renderPage(route) {
+    var page = routeMap[route] || routes[0];
+    frame.innerHTML = '';
+    frame.style.aspectRatio = page.width + ' / ' + page.height;
+
+    var image = document.createElement('img');
+    image.src = page.image;
+    image.alt = page.title + ' Figma 导出图';
+    image.width = page.width;
+    image.height = Math.round(page.height);
+    frame.appendChild(image);
+
+    (hotspots[page.route] || []).forEach(function (spot) {
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'hotspot';
+      button.setAttribute('aria-label', '前往' + (routeMap[spot.to] ? routeMap[spot.to].title : spot.to));
+      button.style.left = (spot.left / page.width * 100) + '%';
+      button.style.top = (spot.top / page.height * 100) + '%';
+      button.style.width = (spot.width / page.width * 100) + '%';
+      button.style.height = (spot.height / page.height * 100) + '%';
+      button.addEventListener('click', function () {
+        setRoute(spot.to);
+      });
+      frame.appendChild(button);
+    });
+
+    document.title = '羽乐场 - ' + page.title;
   }
 
-  function setActiveNav(navName) {
-    navItems.forEach(function(item) {
-      item.classList.remove('active');
-      if (item.getAttribute('data-nav') === navName) item.classList.add('active');
-    });
+  function getRoute() {
+    var hash = window.location.hash.replace(/^#\/?/, '');
+    return routeMap[hash] ? hash : routes[0].route;
   }
 
-  navItems.forEach(function(item) {
-    item.addEventListener('click', function(e) {
-      e.preventDefault();
-      var nav = this.getAttribute('data-nav');
-      setActiveNav(nav);
-      var pageId = navToPage[nav] || 'page-home';
-      showPage(pageId);
-    });
+  function setRoute(route) {
+    if (!routeMap[route]) {
+      route = routes[0].route;
+    }
+    if (getRoute() !== route) {
+      window.location.hash = '#/' + route;
+      return;
+    }
+    renderPage(route);
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }
+
+  window.addEventListener('hashchange', function () {
+    renderPage(getRoute());
   });
 
-  // ===== In-page links (排位赛历史, back buttons) =====
-  document.addEventListener('click', function(e) {
-    var link = e.target.closest('[data-page]');
-    if (link) {
-      e.preventDefault();
-      var pageId = link.getAttribute('data-page');
-      showPage('page-' + pageId.replace('page-',''));
-    }
-    var back = e.target.closest('[data-back]');
-    if (back) {
-      e.preventDefault();
-      setActiveNav('ranking');
-      showPage('page-ranking-empty');
-    }
-  });
-
-  // ===== Banner Carousel Auto-rotate =====
-  (function bannerCarousel() {
-    var slides = document.querySelectorAll('#page-home .banner-slide');
-    var dots = document.querySelectorAll('#page-home .banner-dots .dot');
-    if (!slides.length) return;
-    var current = 0;
-    setInterval(function() {
-      slides[current].classList.remove('active');
-      if (dots[current]) dots[current].classList.remove('active');
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('active');
-      if (dots[current]) dots[current].classList.add('active');
-    }, 3500);
-  })();
-
-  // ===== Match Progress Animation (匹配中 page) =====
-  (function matchingAnimation() {
-    var pulseAvatar = document.querySelector('#page-ranking-matching .mp-avatar.pulse');
-    var vsText = document.querySelector('#page-ranking-matching .match-vs-text.matching');
-    if (!pulseAvatar && !vsText) return;
-    // Pulse and blink are CSS animations - they run automatically
-  })();
-
-  // ===== Countdown Timer (待评价 page) =====
-  (function reviewCountdown() {
-    var countdownEl = document.querySelector('#page-ranking-review .countdown strong');
-    if (!countdownEl) return;
-    var parts = countdownEl.textContent.split(':');
-    var h = parseInt(parts[0]) || 23;
-    var m = parseInt(parts[1]) || 59;
-    var s = parseInt(parts[2]) || 50;
-    var totalSeconds = h * 3600 + m * 60 + s;
-    setInterval(function() {
-      if (totalSeconds <= 0) { countdownEl.textContent = '00:00:00'; return; }
-      totalSeconds--;
-      var hh = Math.floor(totalSeconds / 3600);
-      var mm = Math.floor((totalSeconds % 3600) / 60);
-      var ss = totalSeconds % 60;
-      countdownEl.textContent =
-        String(hh).padStart(2,'0') + ':' +
-        String(mm).padStart(2,'0') + ':' +
-        String(ss).padStart(2,'0');
-    }, 1000);
-  })();
-
-  // ===== Rule card expand/collapse =====
-  // Handled inline via onclick toggle in HTML
-
-  // ===== History card expand/collapse =====
-  // Handled inline via onclick toggle in HTML
-
-  console.log('羽乐场 SPA 已就绪');
+  renderPage(getRoute());
 })();

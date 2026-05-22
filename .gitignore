@@ -1,0 +1,7 @@
+.cache/
+.npm-cache/
+.playwright-cli/
+.playwright/
+.pw-browsers/
+.pw-home/
+output/
