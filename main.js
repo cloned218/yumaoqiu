@@ -108,18 +108,21 @@
     return statusBar()
       + '<section class="home-hero">'
       + '<div class="shortcut-grid">'
-      + '<button class="shortcut" data-route="ranking-empty"><img src="assets/figma/elements/194-982.png" alt=""><span>排位赛</span></button>'
-      + '<button class="shortcut"><img src="assets/figma/elements/194-988.png" alt=""><span>发起约球</span></button>'
-      + '<button class="shortcut"><img src="assets/figma/elements/194-1004.png" alt=""><span>球局列表</span></button>'
-      + '<button class="shortcut"><img src="assets/figma/elements/194-1091.png" alt=""><span>计分器</span></button>'
+      + shortcutCard('ranking-empty', 'shortcut-teal', 'assets/figma/elements/194-982.png', '排位赛')
+      + shortcutCard('', 'shortcut-green', 'assets/figma/elements/194-988.png', '发起约球')
+      + shortcutCard('', 'shortcut-red', 'assets/figma/elements/194-1004.png', '球局列表')
+      + shortcutCard('', 'shortcut-orange', 'assets/figma/elements/194-998.png', '计分器')
       + '</div>'
+      + '<section class="hero-banner">'
+      + '<img src="assets/figma/elements/194-1032.png" alt="羽毛球赛事横幅">'
+      + '</section>'
       + '<article class="profile-completion">'
-      + '<div><h2>完善个人资料</h2><p>资料完善度60%，完善后可解锁更多权益</p></div>'
+      + '<div class="profile-copy"><div class="profile-icon-wrap"><img src="assets/figma/elements/194-1051.png" alt=""></div><div><h2>完善个人资料</h2><p>资料完善度60%，完善后可解锁更多权益</p></div></div>'
       + '<button>去完善</button>'
       + '</article>'
       + '</section>'
       + '<section class="home-section">'
-      + '<header><h3>最近开场的约球局</h3><button>查看全部</button></header>'
+      + '<header><h3>最近开场的约球局</h3><button>查看全部 <img src="assets/figma/elements/194-1066.png" alt=""></button></header>'
       + matchCard(1)
       + matchCard(2)
       + '</section>'
@@ -130,16 +133,28 @@
       + nav('home');
   }
 
+  function shortcutCard(route, tone, icon, label) {
+    return '<button class="shortcut"'
+      + (route ? ' data-route="' + route + '"' : '')
+      + '><span class="shortcut-icon ' + tone + '"><img src="' + icon + '" alt=""></span><span>' + label + '</span></button>';
+  }
+
   function matchCard(index) {
     return '<article class="match-card">'
-      + '<img class="cover" src="assets/figma/elements/194-1032.png" alt="球局封面">'
       + '<div class="match-content">'
       + '<div class="match-head"><h4>周末黄金档双打局</h4><span class="status-open">报名中</span></div>'
-      + '<p class="sub">飞跃之星俱乐部 · 由 王教练 发起</p>'
-      + '<p><b>报名截止时间：</b>05月02日 17:30 （1天5小时28分截止）</p>'
-      + '<p>开场时间: 5月2日19:00 （时长1.5小时）</p>'
-      + '<p>广东省深圳市南山区羽乐场1号馆3/4/5号场 <a>查看地址</a></p>'
-      + '<div class="meta"><span><em>总人数</em>18/30</span><span><em>可带人</em>2人</span><span><em>候补</em>1/50</span><span class="fee">预计费用：40-80元/人</span></div>'
+      + '<p class="sub"><img src="assets/figma/elements/194-1049.png" alt="">飞跃之星俱乐部 · 由 王教练 发起</p>'
+      + '<div class="info-block">'
+      + '<p><img src="assets/figma/elements/194-997.png" alt=""><b>报名截止时间：</b>05月02日 17:30 （1天5小时28分截止）</p>'
+      + '<p><img src="assets/figma/elements/194-996.png" alt=""><b>开场时间：</b>5月2日19:00 （时长1.5小时）</p>'
+      + '</div>'
+      + '<p class="address"><img src="assets/figma/elements/194-995.png" alt="">广东省深圳市南山区羽乐场1号馆3/4/5号场 <a>查看地址</a></p>'
+      + '<div class="meta">'
+      + '<span><em>总人数</em><strong>18/30</strong></span>'
+      + '<span><em>可带人</em><strong>2人</strong></span>'
+      + '<span><em>候补</em><strong>1/50</strong></span>'
+      + '<span class="fee">预计费用：40-80元/人</span>'
+      + '</div>'
       + '<p class="warn">球局限制: 中级以上；迟到10分钟视为弃权</p>'
       + '<div class="actions"><button class="ghost">查看详情</button><button class="solid">我要参与</button></div>'
       + '</div>'

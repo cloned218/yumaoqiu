@@ -162,12 +162,12 @@ body {
 .back::before {
   content: "";
   position: absolute;
-  left: 7px;
+  left: 8px;
   top: 6px;
-  width: 8px;
-  height: 8px;
-  border-left: 2px solid #334155;
-  border-bottom: 2px solid #334155;
+  width: 9px;
+  height: 9px;
+  border-left: 1.8px solid #364153;
+  border-bottom: 1.8px solid #364153;
   transform: rotate(45deg);
 }
 
@@ -228,7 +228,7 @@ body {
 }
 
 .group-title {
-  margin: 14px 16px 10px;
+  margin: 14px 16px 11px;
 }
 
 .group-title h3 {
@@ -236,6 +236,7 @@ body {
   color: var(--text-body);
   font-size: 15px;
   font-weight: 700;
+  line-height: 1.5;
 }
 
 .card {
@@ -285,8 +286,8 @@ button {
 .warn,
 .ghost {
   border: 0;
-  height: 36px;
-  border-radius: 10px;
+  height: 32px;
+  border-radius: 14px;
   padding: 0 18px;
   font-size: 12px;
   font-weight: 600;
@@ -295,6 +296,7 @@ button {
 .solid {
   color: #fff;
   background: var(--brand-gradient);
+  box-shadow: 0 4px 6px -4px #bee9e1, 0 10px 15px -3px #bee9e1;
 }
 
 .warn {
@@ -304,7 +306,7 @@ button {
 
 .ghost {
   color: #364153;
-  background: #f8fafc;
+  background: #fff;
   border: 1px solid #e5e7eb;
 }
 
@@ -316,7 +318,7 @@ button {
 .entry-card {
   margin: 16px;
   width: calc(100% - 32px);
-  height: 57px;
+  height: 56.5px;
   border-radius: 16px;
   border: 1px solid #f3f4f6;
   background: var(--card-bg);
@@ -327,11 +329,12 @@ button {
   font-size: 15px;
   font-weight: 700;
   color: var(--text-body);
+  box-shadow: var(--card-shadow);
 }
 
 .entry-card img {
-  width: 12px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
 }
 
 .progress-wrap {
@@ -514,7 +517,7 @@ button {
 .shortcut-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 8px;
   margin-bottom: 16px;
 }
 
@@ -526,43 +529,112 @@ button {
   align-items: center;
   gap: 6px;
   color: var(--text-body);
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  padding: 0;
 }
 
-.shortcut img {
+.shortcut-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shortcut-icon img {
   width: 24px;
   height: 24px;
   object-fit: contain;
 }
 
+.shortcut-teal {
+  background: linear-gradient(180deg, #59d8d1 0%, #43c4b7 100%);
+  box-shadow: 0 2px 4px -2px rgba(10, 155, 148, 0.2), 0 4px 6px -1px rgba(91, 181, 162, 0.2);
+}
+
+.shortcut-green {
+  background: linear-gradient(180deg, #57d999 0%, #11ae61 100%);
+  box-shadow: 0 2px 4px -2px rgba(0, 166, 62, 0.2), 0 4px 6px -1px rgba(91, 181, 162, 0.2);
+}
+
+.shortcut-red {
+  background: linear-gradient(180deg, #e96f64 0%, #d86565 100%);
+  box-shadow: 0 2px 4px -2px rgba(246, 38, 38, 0.3), 0 4px 6px -1px rgba(246, 38, 38, 0.3);
+}
+
+.shortcut-orange {
+  background: linear-gradient(135deg, #ff6900 0%, #ff8904 100%);
+  box-shadow: 0 2px 4px -2px rgba(255, 105, 0, 0.3), 0 4px 6px -1px rgba(255, 105, 0, 0.3);
+}
+
+.hero-banner {
+  margin-bottom: 20px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.hero-banner img {
+  display: block;
+  width: 100%;
+  height: 134px;
+  object-fit: cover;
+}
+
 .profile-completion {
   height: 70px;
   border-radius: 16px;
-  background: var(--profile-gradient);
+  background: linear-gradient(90deg, #3265cc 0%, #3d59c8 40%, #454ecb 100%);
   padding: 14px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 4px 6px -4px rgba(50, 101, 204, 0.2), 0 10px 15px -3px rgba(50, 101, 204, 0.2);
+}
+
+.profile-copy {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-icon-wrap img {
+  width: 20px;
+  height: 20px;
 }
 
 .profile-completion h2 {
   margin: 0;
-  color: #fff;
+  color: #f3f4f6;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
+  line-height: 20px;
 }
 
 .profile-completion p {
   margin: 3px 0 0;
-  color: #f0fffa;
+  color: #dbeafe;
   font-size: 12px;
+  line-height: 16px;
 }
 
 .profile-completion button {
-  height: 30px;
+  height: 28px;
   border: 0;
-  padding: 0 14px;
+  padding: 0 16px;
   border-radius: 999px;
   color: #3265cc;
   font-size: 12px;
@@ -592,25 +664,27 @@ button {
   background: transparent;
   color: var(--text-muted);
   font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0;
+}
+
+.home-section header button img {
+  width: 14px;
+  height: 14px;
 }
 
 .match-card {
   border-radius: 16px;
-  overflow: hidden;
   border: 1px solid #f3f4f6;
-  background: #fff;
+  background: linear-gradient(180deg, #cef5ee 0%, #ffffff 27%);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   margin-bottom: 12px;
 }
 
-.match-card .cover {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
 .match-content {
-  padding: 12px;
+  padding: 16px 16px 15px;
 }
 
 .match-head {
@@ -622,67 +696,142 @@ button {
 
 .match-head h4 {
   margin: 0;
-  font-size: 15px;
+  font-size: 17px;
+  line-height: 1.5;
   color: var(--text-title);
 }
 
 .status-open {
-  font-size: 10px;
+  font-size: 12px;
+  font-weight: 600;
   color: #00a63e;
   background: #f0fdf4;
-  border-radius: 999px;
+  border-radius: 8px;
   padding: 3px 8px;
 }
 
 .match-content .sub {
-  margin: 6px 0 10px;
-  font-size: 11px;
+  margin: 5px 0 12px;
+  font-size: 12px;
   color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.match-content .sub img {
+  width: 14px;
+  height: 14px;
 }
 
 .match-content p {
-  margin: 5px 0;
+  margin: 0;
   font-size: 12px;
   color: #4a5565;
+}
+
+.info-block {
+  background: #f9fafb;
+  border-radius: 14px;
+  padding: 10px 8px;
+}
+
+.info-block p,
+.address {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 16px;
+}
+
+.info-block p + p {
+  margin-top: 7px;
+}
+
+.info-block img,
+.address img {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+
+.info-block b,
+.address b {
+  font-weight: 700;
+}
+
+.address {
+  margin-top: 7px;
 }
 
 .match-content a {
   color: #5bb5a2;
   font-weight: 700;
+  text-decoration: none;
 }
 
 .meta {
-  margin-top: 8px;
+  margin-top: 11px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px 16px;
+  align-items: center;
+  gap: 0;
   font-size: 12px;
   color: #4a5565;
+}
+
+.meta > span {
+  min-width: 82px;
+  padding-right: 16px;
+  margin-right: 16px;
+  border-right: 1px solid #e5e7eb;
+}
+
+.meta > span:last-child {
+  margin-right: 0;
+  padding-right: 0;
+  border-right: 0;
 }
 
 .meta em {
   display: block;
   font-style: normal;
-  color: var(--text-light);
+  color: #99a1af;
   font-size: 10px;
+  margin-bottom: 2px;
+}
+
+.meta strong {
+  display: block;
+  font-size: 15px;
+  line-height: 20px;
+  color: #1e293b;
+}
+
+.meta span:first-child strong,
+.meta span:nth-child(3) strong {
+  color: #5bb5a2;
 }
 
 .meta .fee {
   margin-left: auto;
   color: #3d2c1e;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 700;
+  min-width: auto;
 }
 
 .match-content .warn {
-  margin-top: 8px;
+  margin-top: 9px;
   color: #ff8c42;
   font-size: 12px;
   font-weight: 700;
 }
 
 .match-content .actions {
-  margin-top: 10px;
+  margin-top: 16px;
   justify-content: space-between;
+  border-top: 1px solid #f3f4f6;
+  padding-top: 16px;
 }
 
 .home-partner {
@@ -690,6 +839,7 @@ button {
   border-radius: 16px;
   overflow: hidden;
   position: relative;
+  box-shadow: var(--card-shadow);
 }
 
 .home-partner img {
@@ -706,6 +856,7 @@ button {
 
 .partner-text small {
   font-size: 9px;
+  line-height: 13.5px;
 }
 
 .partner-text strong {
@@ -871,6 +1022,7 @@ button {
   height: 64px;
   background: #fff;
   border-top: 1px solid #e5e7eb;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 }
@@ -886,12 +1038,12 @@ button {
   color: var(--text-light);
   font-size: 10px;
   font-weight: 500;
-  padding: 4px 0;
+  padding: 6px 0 5px;
 }
 
 .bottom-nav .nav-item img {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   object-fit: contain;
 }
 
