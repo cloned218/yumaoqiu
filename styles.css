@@ -2,11 +2,27 @@
 
 html { -webkit-text-size-adjust: 100%; }
 
+:root {
+  --bg-page: #f9fafb;
+  --brand: #21afa3;
+  --brand-gradient: linear-gradient(180deg, #21afa3 0%, #0bb793 100%);
+  --hero-gradient: linear-gradient(180deg, #d3f6ef 0%, #f9fafb 100%);
+  --profile-gradient: linear-gradient(180deg, #51cac8 0%, #48bdb3 100%);
+  --warn-gradient: linear-gradient(180deg, #e96f64 0%, #d76565 100%);
+  --orange-gradient: linear-gradient(180deg, #ff6900 0%, #ff8904 100%);
+  --text-title: #101828;
+  --text-body: #1e293b;
+  --text-muted: #6a7282;
+  --text-light: #99a1af;
+  --card-bg: #ffffff;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
 body {
   margin: 0;
-  background: #f3f4f6;
-  color: #1e293b;
-  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: var(--bg-page);
+  color: var(--text-body);
+  font-family: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
 }
 
 .viewport {
@@ -18,7 +34,7 @@ body {
 .phone {
   width: 100%;
   max-width: 448px;
-  background: #f9fafb;
+  background: var(--bg-page);
 }
 
 .screen {
@@ -41,6 +57,7 @@ body {
   font-size: 15px;
   font-weight: 700;
   color: #0a0a0a;
+  font-family: "PingFang SC", "Inter", sans-serif;
 }
 
 .status-right {
@@ -125,7 +142,7 @@ body {
 .page-header h1 {
   margin: 0;
   font-size: 18px;
-  color: #101828;
+  color: var(--text-title);
   font-weight: 700;
 }
 
@@ -162,7 +179,7 @@ body {
   display: flex;
   align-items: center;
   gap: 14px;
-  background: linear-gradient(180deg, #22afa4 0%, #0bb893 100%);
+  background: var(--brand-gradient);
   box-shadow: 0 6px 16px -2px rgba(190, 233, 224, 0.9);
 }
 
@@ -216,17 +233,17 @@ body {
 
 .group-title h3 {
   margin: 0;
-  color: #1e293b;
+  color: var(--text-body);
   font-size: 15px;
   font-weight: 700;
 }
 
 .card {
   margin: 0 16px;
-  background: #fff;
+  background: var(--card-bg);
   border: 1px solid #f3f4f6;
   border-radius: 16px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
 }
 
 .empty-state {
@@ -243,12 +260,12 @@ body {
   margin: 10px 0 8px;
   font-size: 14px;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--text-body);
 }
 
 .empty-state p {
   margin: 0;
-  color: #6b7280;
+  color: var(--text-muted);
   font-size: 12px;
 }
 
@@ -277,12 +294,12 @@ button {
 
 .solid {
   color: #fff;
-  background: linear-gradient(180deg, #22afa4 0%, #0bb893 100%);
+  background: var(--brand-gradient);
 }
 
 .warn {
-  color: #fb2c36;
-  background: #fff1f2;
+  color: #fff;
+  background: var(--warn-gradient);
 }
 
 .ghost {
@@ -302,14 +319,14 @@ button {
   height: 57px;
   border-radius: 16px;
   border: 1px solid #f3f4f6;
-  background: #fff;
+  background: var(--card-bg);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
   font-size: 15px;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--text-body);
 }
 
 .entry-card img {
@@ -332,7 +349,7 @@ button {
 
 .step {
   text-align: center;
-  color: #6b7280;
+  color: var(--text-muted);
   position: relative;
 }
 
@@ -357,7 +374,7 @@ button {
 
 .step.done span,
 .step.active span {
-  background: #22afa4;
+  background: #1eb0a1;
 }
 
 .step.done,
@@ -388,7 +405,7 @@ button {
 .detail-head h4 {
   margin: 0;
   font-size: 14px;
-  color: #1e293b;
+  color: var(--text-body);
 }
 
 .badge {
@@ -396,9 +413,14 @@ button {
   font-weight: 700;
 }
 
-.badge.orange { color: #ff6900; }
+.badge.orange {
+  color: #fff;
+  background: var(--orange-gradient);
+  border-radius: 999px;
+  padding: 3px 8px;
+}
 .badge.green { color: #00a63e; }
-.badge.blue { color: #1a9fff; }
+.badge.blue { color: #3265cc; }
 
 .rows {
   display: flex;
@@ -411,7 +433,7 @@ button {
   justify-content: space-between;
   gap: 12px;
   font-size: 14px;
-  color: #6b7280;
+  color: var(--text-muted);
 }
 
 .row b {
@@ -420,8 +442,8 @@ button {
   font-weight: 700;
 }
 
-.row b.teal { color: #22afa4; }
-.row b.dark { color: #1e293b; }
+.row b.teal { color: var(--brand); }
+.row b.dark { color: var(--text-body); }
 
 .actions {
   display: flex;
@@ -440,13 +462,13 @@ button {
 
 .phase-list strong {
   font-size: 13px;
-  color: #1e293b;
+  color: var(--text-body);
 }
 
 .phase-list p {
   margin: 4px 0 0;
   font-size: 11px;
-  color: #6b7280;
+  color: var(--text-muted);
 }
 
 .phase-list .danger,
@@ -465,7 +487,7 @@ button {
 .rules h3 {
   margin: 0 0 10px;
   font-size: 15px;
-  color: #1e293b;
+  color: var(--text-body);
 }
 
 .rules p {
@@ -486,7 +508,7 @@ button {
 
 .home-hero {
   padding: 20px 16px 0;
-  background: linear-gradient(180deg, #d8faf2 0%, #f9fafb 58%);
+  background: var(--hero-gradient);
 }
 
 .shortcut-grid {
@@ -503,7 +525,7 @@ button {
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  color: #364153;
+  color: var(--text-body);
   font-size: 11px;
   font-weight: 600;
 }
@@ -517,7 +539,7 @@ button {
 .profile-completion {
   height: 70px;
   border-radius: 16px;
-  background: linear-gradient(90deg, #39b8ff 0%, #60a5fa 100%);
+  background: var(--profile-gradient);
   padding: 14px 16px;
   display: flex;
   justify-content: space-between;
@@ -533,7 +555,7 @@ button {
 
 .profile-completion p {
   margin: 3px 0 0;
-  color: #dbeafe;
+  color: #f0fffa;
   font-size: 12px;
 }
 
@@ -562,13 +584,13 @@ button {
 .home-section h3 {
   margin: 0;
   font-size: 18px;
-  color: #101828;
+  color: var(--text-title);
 }
 
 .home-section header button {
   border: 0;
   background: transparent;
-  color: #6a7282;
+  color: var(--text-muted);
   font-size: 12px;
 }
 
@@ -601,13 +623,13 @@ button {
 .match-head h4 {
   margin: 0;
   font-size: 15px;
-  color: #101828;
+  color: var(--text-title);
 }
 
 .status-open {
   font-size: 10px;
   color: #00a63e;
-  background: #ebfff4;
+  background: #f0fdf4;
   border-radius: 999px;
   padding: 3px 8px;
 }
@@ -615,7 +637,7 @@ button {
 .match-content .sub {
   margin: 6px 0 10px;
   font-size: 11px;
-  color: #6a7282;
+  color: var(--text-muted);
 }
 
 .match-content p {
@@ -641,7 +663,7 @@ button {
 .meta em {
   display: block;
   font-style: normal;
-  color: #99a1af;
+  color: var(--text-light);
   font-size: 10px;
 }
 
@@ -696,7 +718,7 @@ button {
 .history-note {
   padding: 0 16px;
   font-size: 12px;
-  color: #6a7282;
+  color: var(--text-muted);
 }
 
 .card.simple,
@@ -714,7 +736,7 @@ button {
 .history-head h3 {
   margin: 0;
   font-size: 14px;
-  color: #1e293b;
+  color: var(--text-body);
 }
 
 .history-score {
@@ -833,7 +855,7 @@ button {
 }
 
 .sets .red { color: #fb2c36; }
-.sets .green { color: #0bb893; text-align: right; }
+.sets .green { color: #0bb793; text-align: right; }
 
 .sets span {
   font-size: 12px;
@@ -861,7 +883,7 @@ button {
   align-items: center;
   justify-content: center;
   gap: 4px;
-  color: #99a1af;
+  color: var(--text-light);
   font-size: 10px;
   font-weight: 500;
   padding: 4px 0;
